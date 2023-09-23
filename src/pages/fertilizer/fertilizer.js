@@ -1,4 +1,5 @@
 import PreHeader from "../../components/preheader/preheader";
+import { Circles } from "react-loader-spinner";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/footer";
 import React, { useState } from "react";
@@ -11,7 +12,7 @@ import DAP from "../../components/img/DAP.png";
 import Urea from "../../components/img/Urea.png";
 
 const Fertilizer = () => {
-  const [load, setLoad] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [soilType, setSoilType] = useState("");
   const [cropType, setCropType] = useState("");
   const [moisture, setMoisture] = useState("");
@@ -26,7 +27,8 @@ const Fertilizer = () => {
   const [lang, setLang] = useState("en");
   const [image, setImage] = useState("");
   function onSearchSubmit(term) {
-    setLoad(true);
+    setLoading(true);
+    console.log("trye");
     console.log("Clicked");
     let url = "http://127.0.0.1:5000/fertilizer-predict";
     let body = JSON.stringify({
@@ -54,13 +56,31 @@ const Fertilizer = () => {
         .then((data) => {
           console.log(data);
           let main_data = data["data"];
-          if (main_data["prediction"] == "17-17-17") setImage(F17);
-          if (main_data["prediction"] == "20-20") setImage(F20);
-          if (main_data["prediction"] == "28-28") setImage(F28);
-          if (main_data["prediction"] == "14-35-14") setImage(F14);
-          if (main_data["prediction"] == "10-26-26") setImage(F10);
-          if (main_data["prediction"] == "DAP") setImage(DAP);
-          if (main_data["prediction"] == "Urea") setImage(Urea);
+          switch (main_data["prediction"]) {
+            case "17-17-17":
+              setImage(F17);
+              break;
+            case "20-20":
+              setImage(F20);
+              break;
+            case "28-28":
+              setImage(F28);
+              break;
+            case "14-35-14":
+              setImage(F14);
+              break;
+            case "10-26-26":
+              setImage(F10);
+              break;
+            case "DAP":
+              setImage(DAP);
+              break;
+            case "Urea":
+              setImage(Urea);
+              break;
+            default:
+              break;
+          }
           if (main_data && main_data["prediction"]) {
             setPrediction(main_data["prediction"]);
             // ...
@@ -75,16 +95,17 @@ const Fertilizer = () => {
               main_data["info"]["application"]["2"]
           );
           setSpecification(main_data["info"]["specifications"]);
-          console.log("res", data); // gives SyntaxError: Unexpected end of input
+          console.log("result", data); // gives SyntaxError: Unexpected end of input
+          setLoading(false);
         })
         .catch((error) => {
           console.log(error);
+          setLoading(false);
         });
     } catch (e) {
       console.log(e);
+      setLoading(false);
     }
-
-    setLoad(false);
   }
 
   return (
@@ -221,38 +242,46 @@ const Fertilizer = () => {
           </div>
         </div>
         <div>
-          {load ? (
-            <div className="grid place-items-center my-14  ">loading </div>
-          ) : (
-            <div></div>
-          )}
-          {prediction !== "" ? (
-            <div className="grid grid-cols-1 grid-rows-2 md:grid-cols-4 gap-1 place-items-center my-14 text-left p-11">
-              <div className="md:col-span-1 ">
-                <img
-                  src={image}
-                  alt="fertilizer"
-                  width="200px"
-                  height="300px"
-                />
-              </div>
-              <div className="md:col-span-3">
-                <p className="font-bold my-1">
-                  Predicted Fertilizer Name: {prediction}
-                </p>
-
-                <p className="font-bold my-1">Information:</p>
-                {information}
-                <p className="font-bold my-1">Application:</p>
-                {application}
-              </div>
-              <div className="col-span-4">
-                <p className="font-bold my-1">Specification:</p>
-                {specification}
-              </div>
+          {loading ? (
+            <div className="grid place-items-center my-14">
+              <p className="font-bold my-3">Loading </p>
+              <Circles
+                height="80"
+                width="80"
+                color="#4fa94d"
+                ariaLabel="circles-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+              />
             </div>
           ) : (
-            <div></div>
+            prediction !== "" && (
+              <div className="grid grid-cols-1 grid-rows-2 md:grid-cols-4 gap-1 place-items-center my-14 text-left p-11">
+                <div className="md:col-span-1 ">
+                  <img
+                    src={image}
+                    alt="fertilizer"
+                    width="200px"
+                    height="300px"
+                  />
+                </div>
+                <div className="md:col-span-3">
+                  <p className="font-bold my-1">
+                    Predicted Fertilizer Name: {prediction}
+                  </p>
+
+                  <p className="font-bold my-1">Information:</p>
+                  {information}
+                  <p className="font-bold my-1">Application:</p>
+                  {application}
+                </div>
+                <div className="col-span-4">
+                  <p className="font-bold my-1">Specification:</p>
+                  {specification}
+                </div>
+              </div>
+            )
           )}
         </div>
       </section>

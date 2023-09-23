@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Circles } from "react-loader-spinner";
 import PreHeader from "../../components/preheader/preheader";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/footer";
@@ -10,7 +11,7 @@ const Disease = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [useCamera, setUseCamera] = useState(true);
-
+  const [loading, setLoading] = useState(false);
   const constraints = {
     video: true
   };
@@ -26,6 +27,8 @@ const Disease = () => {
   let url = "http://127.0.0.1:5000/disease-predict/" + lang;
   let form = new FormData();
   const fileUpload = () => {
+    setLoading(true);
+    console.log("true");
     form.append("file", photo[0]);
     try {
       fetch(url, {
@@ -40,15 +43,19 @@ const Disease = () => {
           let main_data = data["data"];
           setPrediction(main_data["prediction"]);
           console.log("res", data); // gives SyntaxError: Unexpected end of input
+          setLoading(false);
         })
         .catch((error) => {
           console.log(error);
+          setLoading(false);
         });
     } catch (e) {
       console.log(e);
+      setLoading(false);
     }
   };
   const captureImage = () => {
+    setLoading(true);
     const video = videoRef.current;
     const canvas = canvasRef.current;
     canvas.width = video.videoWidth;
@@ -74,9 +81,11 @@ const Disease = () => {
           } else {
             console.error("Prediction failed:", data.message);
           }
+          setLoading(false);
         })
         .catch((error) => {
           console.error("Prediction error:", error);
+          setLoading(false);
         });
     }, "image/jpeg");
   };
@@ -166,18 +175,32 @@ const Disease = () => {
             <button
               onClick={fileUpload}
               type="button"
-              className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+              className="inline-block px-6 py-2.5 bg-green-600 mb-2 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
             >
               Get Upload
             </button>
           </div>
         )}
-
-        {prediction && (
+        {loading ? (
           <div className="grid place-items-center my-14 text-center ">
-            <p className="font-bold my-3">Disease From Image Predicted: </p>
-            {prediction}
+            <p className="font-bold my-3">Loading </p>
+            <Circles
+              height="80"
+              width="80"
+              color="#4fa94d"
+              ariaLabel="circles-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
           </div>
+        ) : (
+          prediction && (
+            <div className="grid place-items-center my-14 text-center ">
+              <p className="font-bold my-3">Disease From Image Predicted: </p>
+              {prediction}
+            </div>
+          )
         )}
       </div>
       <Footer />

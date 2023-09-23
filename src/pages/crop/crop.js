@@ -1,4 +1,5 @@
 import PreHeader from "../../components/preheader/preheader";
+import { Circles } from "react-loader-spinner";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/footer";
 import React, { useState } from "react";
@@ -42,15 +43,15 @@ const Crop = () => {
           let main_data = data["data"];
           setPrediction(main_data["prediction"]);
           console.log("res", data); // gives SyntaxError: Unexpected end of input
+          setLoad(false);
         })
         .catch((error) => {
           console.log(error);
+          setLoad(false);
         });
     } catch (e) {
       console.log(e);
     }
-
-    setLoad(false);
   }
 
   return (
@@ -161,17 +162,25 @@ const Crop = () => {
 
         <div>
           {load ? (
-            <div className="grid place-items-center my-14  ">loading </div>
-          ) : (
-            <div></div>
-          )}
-          {prediction !== "" ? (
-            <div className="grid place-items-center my-14 text-center ">
-              <p className="font-bold my-3">Crop Predicted: </p>
-              {prediction}
+            <div className="grid place-items-center my-14  ">
+              <p className="font-bold my-3">Loading...</p>
+              <Circles
+                height="80"
+                width="80"
+                color="#4fa94d"
+                ariaLabel="circles-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+              />
             </div>
           ) : (
-            <div></div>
+            prediction !== "" && (
+              <div className="grid place-items-center my-14 text-center ">
+                <p className="font-bold my-3">Crop Predicted: </p>
+                {prediction}
+              </div>
+            )
           )}
         </div>
       </section>
