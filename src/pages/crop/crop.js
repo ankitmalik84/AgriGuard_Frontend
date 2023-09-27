@@ -3,6 +3,7 @@ import { Circles } from "react-loader-spinner";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/footer";
 import React, { useState } from "react";
+import Navbar from "../../components/Header/Navbar";
 
 const Crop = () => {
   const [load, setLoad] = useState(false);
@@ -56,6 +57,7 @@ const Crop = () => {
 
   return (
     <>
+      <Navbar />
       <PreHeader />
       <Header />
       <section className="">

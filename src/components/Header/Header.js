@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div className="h-10 inPhone my-2">
       <div className="flex content-center">
-        <div className="flex items-center cursor-pointer ml-auto lg:ml-16">
+        <div className="flex items-center cursor-pointer ml-auto lg:ml-18">
           <img
             onClick={() => navigate("/")}
             src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Beige_%26_Green_Minimalist_Organic_Sho.png"
@@ -41,7 +41,7 @@ const Header = () => {
             </li>
             <li
               onClick={() => navigate("/disease")}
-              className="text-sm cursor-pointer font-semibold text-[#486D28] hover:opacity-90 ml-6 mr-1.5"
+              className="text-sm cursor-pointer font-semibold text-[#486D28] hover:opacity-90  ml-6 mr-1.5"
             >
               Disease Prediction
             </li>

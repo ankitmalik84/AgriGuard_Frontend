@@ -3,10 +3,11 @@ import { Circles } from "react-loader-spinner";
 import PreHeader from "../../components/preheader/preheader";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/footer";
+import Navbar from "../../components/Header/Navbar";
 
 const Disease = () => {
   const [photo, setPhoto] = useState([]);
-  const [prediction, setPrediction] = useState("");
+  const [prediction, setPrediction] = useState(null);
   const [lang, setLang] = useState("en");
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -41,7 +42,7 @@ const Disease = () => {
         .then((response) => response.json())
         .then((data) => {
           let main_data = data["data"];
-          setPrediction(main_data["prediction"]);
+          setPrediction(main_data);
           console.log("res", data); // gives SyntaxError: Unexpected end of input
           setLoading(false);
         })
@@ -77,7 +78,8 @@ const Disease = () => {
         .then((data) => {
           if (data.success) {
             console.log(data);
-            setPrediction(data.data.prediction);
+            setPrediction(data.data);
+            // setPrediction(true);
           } else {
             console.error("Prediction failed:", data.message);
           }
@@ -92,6 +94,7 @@ const Disease = () => {
 
   return (
     <>
+      <Navbar />
       <PreHeader />
       <Header />
       <div>
@@ -196,13 +199,53 @@ const Disease = () => {
           </div>
         ) : (
           prediction && (
-            <div className="grid place-items-center my-14 text-center ">
-              <p className="font-bold my-3">Disease From Image Predicted: </p>
-              {prediction}
+            <div className="grid place-items-center my-14 text-center">
+              <p className="font-bold my-3">Disease From Image Predicted:</p>
+              <div className="text-left bg-gray-100 p-4 rounded-lg shadow">
+                <h3 className="text-lg font-semibold">
+                  {prediction.disease_name}
+                </h3>
+                {prediction.causes && (
+                  <div className="mt-2">
+                    <h4 className="text-md font-semibold">Causes:</h4>
+                    <ul className="list-disc ml-6">
+                      {prediction.causes["1"] && (
+                        <li>{prediction.causes["1"]}</li>
+                      )}
+                      {prediction.causes["2"] && (
+                        <li>{prediction.causes["2"]}</li>
+                      )}
+                      {prediction.causes["3"] && (
+                        <li>{prediction.causes["3"]}</li>
+                      )}
+                    </ul>
+                  </div>
+                )}
+                {prediction.prevent && (
+                  <div className="mt-2">
+                    <h4 className="text-md font-semibold">Prevent:</h4>
+                    <ul className="list-disc ml-6">
+                      {prediction.prevent["1"] && (
+                        <li>{prediction.prevent["1"]}</li>
+                      )}
+                      {prediction.prevent["2"] && (
+                        <li>{prediction.prevent["2"]}</li>
+                      )}
+                      {prediction.prevent["3"] && (
+                        <li>{prediction.prevent["3"]}</li>
+                      )}
+                      {prediction.prevent["4"] && (
+                        <li>{prediction.prevent["4"]}</li>
+                      )}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
           )
         )}
       </div>
+
       <Footer />
     </>
   );
