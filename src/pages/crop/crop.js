@@ -179,8 +179,10 @@ const Crop = () => {
           ) : (
             prediction !== "" && (
               <div className="grid place-items-center my-14 text-center ">
-                <p className="font-bold my-3">Crop Predicted: </p>
-                {prediction}
+                <h2 className="font-medium my-3">
+                  According to your Input Data Best Predicted Crop:{" "}
+                </h2>
+                <h2 className="font-bold my-3"> {prediction.toUpperCase()} </h2>
               </div>
             )
           )}
