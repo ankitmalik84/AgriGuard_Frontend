@@ -17,16 +17,19 @@ Our project relies on various technologies to fulfill its goals:
 ## Workflow
 
 ### Flow 1: Image Capture and Web Interface
+
 ![Flow 1](/src/flow/flow1.png)
-*Description: This image depicts how crop images are captured and provides an overview of the web interface.*
+_Description: This image depicts how crop images are captured and provides an overview of the web interface._
 
 ### Flow 2: Backend Data Processing and Machine Learning
+
 ![Flow 2](/src/flow/flow2.png)
-*Description: This image illustrates the backend part of our project, showing how data processing and machine learning tasks are performed.*
+_Description: This image illustrates the backend part of our project, showing how data processing and machine learning tasks are performed._
 
 ### Flow 3: Revenue Generation and Business Description
-![Flow 3](/src/flow/flow3.png) 
-*Description: This image showcases the revenue generation aspect of our model and includes business-related content.*
+
+![Flow 3](/src/flow/flow3.png)
+_Description: This image showcases the revenue generation aspect of our model and includes business-related content._
 
 Currently, companies physically engage with farmers to verify fertilizer efficacy, necessitating feedback visits. With a streamlined remote consultancy system, companies optimize crop cultivation, recommend fertilizers, and establish a recurring revenue model through consultation fees and sales, driving sustainable growth for both parties involved.
 
