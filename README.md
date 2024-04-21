@@ -28,17 +28,18 @@ _Description: This image illustrates the backend part of our project, showing ho
 
 ### Flow 3: Revenue Generation and Business Description
 
-![Flow 3](/src/flow/flow3.png)
-_Description: This image showcases the revenue generation aspect of our model and includes business-related content._
-
-Currently, companies physically engage with farmers to verify fertilizer efficacy, necessitating feedback visits. With a streamlined remote consultancy system, companies optimize crop cultivation, recommend fertilizers, and establish a recurring revenue model through consultation fees and sales, driving sustainable growth for both parties involved.
+<div style="display: flex;">
+  <img src="/src/flow/flow3.png" alt="Flow 3" width="50%">
+  <div style="margin-left: 20px;">
+    <p><em>Description:</em> This image showcases the revenue generation aspect of our model and includes business-related content.</p>
+    <p>Currently, companies physically engage with farmers to verify fertilizer efficacy, necessitating feedback visits. With a streamlined remote consultancy system, companies optimize crop cultivation, recommend fertilizers, and establish a recurring revenue model through consultation fees and sales, driving sustainable growth for both parties involved.</p>
+  </div>
+</div>
 
 ## Social Impacts
 
 This initiative promises economic benefits by enabling companies to target consumers who have cultivated crops treated with their fertilizers. By enhancing farmers' productivity, it fosters increased revenue streams for both agricultural businesses and farmers, thereby contributing to overall economic growth and sustainability.
 
-## Links
+---
 
-- **Frontend Repository:** [AgriGuard Frontend](https://github.com/ankitmalik84/AgriGuard_Frontend)
-- **Backend Repository:** [AgriGuard Backend](https://github.com/ankitmalik84/AgriGuard_backend)
-- **Machine Learning Repository:** [AgriGuard Machine Learning](https://github.com/ankitmalik84/AgriGuard_ML)
+We are continually working on improving this project. If you have any suggestions or contributions, feel free to contribute!
