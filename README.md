@@ -43,3 +43,9 @@ This initiative promises economic benefits by enabling companies to target consu
 ---
 
 We are continually working on improving this project. If you have any suggestions or contributions, feel free to contribute!
+
+## Links
+
+- **Frontend Repository:** [AgriGuard Frontend](https://github.com/ankitmalik84/AgriGuard_Frontend)
+- **Backend Repository:** [AgriGuard Backend](https://github.com/ankitmalik84/AgriGuard_backend)
+- **Machine Learning Repository:** [AgriGuard Machine Learning](https://github.com/ankitmalik84/AgriGuard_ML)
