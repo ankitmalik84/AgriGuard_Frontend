@@ -14,7 +14,7 @@ const PreHeader = () => {
             alt=""
           />
           <p className="font-semibold text-[#486D28] text-xs sm:text-sm ml-1">
-            Smart India Hackthon Project
+            Trikon 1.0 Hackthon Project
           </p>
         </div>
         <div className="">

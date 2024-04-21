@@ -16,7 +16,7 @@ const Header = () => {
             alt=""
           />
           <h3 className="text-md font-bold opacity-[.70]">
-            AgriGuard: Smart Agriculture Drone
+            AgriGuard: Smart Agriculture Drone Project
           </h3>
         </div>
         <div className="flex-2 w-6/12 mx-auto">

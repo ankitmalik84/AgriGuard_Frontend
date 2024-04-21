@@ -22,7 +22,7 @@ const Footer = () => {
             />
             <div className="ml-4">
               <h3 className="text-2xl text-white font-bold mt-4">
-                AgriGuard: Smart Agriculture Drone
+                AgriGuard: Smart Agriculture Drone Model
               </h3>
               <p className="text-md font-normal text-white mt-2">
                 WeAreFarmersPower
@@ -39,7 +39,6 @@ const Footer = () => {
               >
                 Home
               </li>
-              {/* <li className='text-lg text-white font-medium cursor-pointer'>Menu</li> */}
             </ul>
             <ul>
               <li
@@ -54,12 +53,6 @@ const Footer = () => {
               >
                 Crop Prediction
               </li>
-              {/* <li
-                className="text-lg text-white font-medium cursor-pointer"
-                onClick={() => navigate("/voice")}
-              >
-                Weather Prediction
-              </li> */}
               <li
                 className="text-lg text-white font-medium cursor-pointer"
                 onClick={() => navigate("/disease")}
@@ -100,9 +93,7 @@ const Footer = () => {
             className="footerBgImg"
             alt=""
           />
-          <h1 className="text-xl text-white font-bold mt-6">
-            Smart India Hackthon
-          </h1>
+          <h1 className="text-xl text-white font-bold mt-6">Trikon 1.0</h1>
         </div>
       </div>
     </div>
