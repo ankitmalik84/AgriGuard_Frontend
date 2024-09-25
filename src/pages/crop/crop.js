@@ -19,7 +19,7 @@ const Crop = () => {
   function onSearchSubmit(term) {
     setLoad(true);
     console.log("Clicked");
-    let url = "http://127.0.0.1:5000/crop-recommedation";
+    let url = `${process.env.REACT_APP_URL}/crop-recommedation`;
     let body = JSON.stringify({
       nitrogen: parseFloat(nitrogen),
       phosphorous: parseFloat(phosphorus),

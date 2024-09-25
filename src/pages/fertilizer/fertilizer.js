@@ -30,7 +30,7 @@ const Fertilizer = () => {
     setLoading(true);
     console.log("trye");
     console.log("Clicked");
-    let url = "http://127.0.0.1:5000/fertilizer-predict";
+    let url = `${process.env.REACT_APP_URL}/fertilizer-predict`;
     let body = JSON.stringify({
       "soil-type": soilType,
       "crop-type": cropType,

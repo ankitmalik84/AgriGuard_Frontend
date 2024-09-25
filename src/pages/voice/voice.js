@@ -35,7 +35,7 @@ const Voice = () => {
   function onSearchSubmit(term) {
     setLoad(true);
     console.log("Clicked");
-    let url = "http://127.0.0.1:5000/farmers-log";
+    let url = `${process.env.REACT_APP_URL}/farmers-log`;
     let body = JSON.stringify({
       log: log,
       lang: lang

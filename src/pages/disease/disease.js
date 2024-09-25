@@ -25,7 +25,7 @@ const Disease = () => {
       console.error("Error accessing camera:", error);
     }
   };
-  let url = "http://127.0.0.1:5000/disease-predict/" + lang;
+  let url = `${process.env.REACT_APP_URL}/disease-predict/${lang}`;
   let form = new FormData();
   const fileUpload = () => {
     setLoading(true);
