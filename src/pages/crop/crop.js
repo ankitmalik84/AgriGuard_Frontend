@@ -34,8 +34,7 @@ const Crop = () => {
       fetch(url, {
         method: "post",
         headers: {
-          "Content-Type": "application/json;charset=utf-8",
-          "Access-Control-Allow-Origin": "*"
+          "Content-Type": "application/json;charset=utf-8"
         },
         body: body
       })
