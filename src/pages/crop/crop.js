@@ -41,6 +41,7 @@ const Crop = () => {
       })
         .then((response) => response.json())
         .then((data) => {
+          console.log("received",data);
           let main_data = data["data"];
           setPrediction(main_data["prediction"]);
           console.log("res", data); // gives SyntaxError: Unexpected end of input
