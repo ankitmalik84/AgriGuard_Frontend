@@ -41,6 +41,7 @@ const Disease = () => {
       })
         .then((response) => response.json())
         .then((data) => {
+          console.log('Disease received',data);
           let main_data = data["data"];
           setPrediction(main_data);
           console.log("res", data); // gives SyntaxError: Unexpected end of input
